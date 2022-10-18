@@ -17,3 +17,5 @@ $(PRINTF_SRC):
 clean:
 	$(RM) $(NAME) $(OBJ)
 	$(MAKE) -C ../ft_printf/ fclean
+
+.PHONY: ../ft_printf/libftprintf.a clean printf_tester all

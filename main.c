@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:08:45 by znichola          #+#    #+#             */
-/*   Updated: 2022/10/17 22:04:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/10/18 08:57:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	main(int ac, char **av)
 	// printf("\nreturn value is : %zu\n\n", len);
 	// size_t len2 = printf(format, _int, _char, _str, _hex, LONG_MIN, _uin, NULL);
 	// printf("\nreturn value is : %zu\n", len2);
-	
-#define	FRMT "{ %-2c }"
-#define	TST '0'
+	// {        c}
+	// {    c}
+#define	FRMT "{%5c}"
+#define	TST 'c'
 	printf("\nmy  r eturn value is : %d\n\n", ft_printf(FRMT, TST));
 	printf("\nreal return value is : %d\n\n", printf(FRMT, TST));
 	// char *format = "test[%d]";
