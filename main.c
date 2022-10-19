@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:08:45 by znichola          #+#    #+#             */
-/*   Updated: 2022/10/18 08:57:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/10/19 12:39:34 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,41 @@ int	main(int ac, char **av)
 	// printf("\nreturn value is : %zu\n\n", len);
 	// size_t len2 = printf(format, _int, _char, _str, _hex, LONG_MIN, _uin, NULL);
 	// printf("\nreturn value is : %zu\n", len2);
-	// {        c}
-	// {    c}
-#define	FRMT "{%5c}"
-#define	TST 'c'
-	printf("\nmy  r eturn value is : %d\n\n", ft_printf(FRMT, TST));
-	printf("\nreal return value is : %d\n\n", printf(FRMT, TST));
+	// 42-00000000001174475240        42
+	// 42-00000000001174475240       42
+	// 42        -0000000000117447524042
+	// 42       -0000000000117447524042
+	// [>------------<-85603645>------------<]
+	// [>------------< -85603645>------------<]
+	
+// #define	FRMT "[42%-28.20d42]"
+// #define	TST -1174475240
+// 	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
+// 	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
+// #define	FRMT "[42%28.20d42]"
+// #define	TST -1174475240
+// 	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
+// 	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
+// #define	FRMT "[>------------<%10.5d>------------<]"
+// #define	TST -85603645
+// 	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
+// 	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
+
+// #define	FRMT "[%-4d]"
+// #define	TST -14
+// 	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
+// 	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
+	
+//
+// -0000000123
+// -0000000123
+
+#define	FRMT "[%-.3s]"
+#define	TST "-assfsfdd"
+	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
+	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
+	
+	
 	// char *format = "test[%d]";
 	// size_t len = ft_printf(format, 1234);
 	// printf("\nreturn value is : %zu\n\n", len);
