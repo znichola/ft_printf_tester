@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:08:45 by znichola          #+#    #+#             */
-/*   Updated: 2022/10/20 17:18:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/10/22 15:23:04 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	
-	int test = 123; 
+	// int test = 123; 
 
 	// char *format = "int[%d] char[%c] str[%s] hex[%x] ptr[%p] uin[%u] NULL[%s] percent[%%]\n";
 	// int _int = 123; int _hex = -123; int _uint = 123;	char _char = 'b'; char *_str = "test";
@@ -47,10 +47,12 @@ int	main(int ac, char **av)
 // #define	TST -85603645
 // 	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST)-2);
 // 	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST)-2);
-#define	FRMT "[%-05%]"
-#define	TST 'c'
-	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT)-2);
-	printf("\nreal return value is : {%d}\n\n",    printf(FRMT)-2);
+#define	FRMT "[%p]"
+#define	TST "sdfds"
+// char *t = "skldjf";
+
+	printf("\nmy   return value is : {%d}\n\n", ft_printf(FRMT, TST));
+	printf("\nreal return value is : {%d}\n\n",    printf(FRMT, TST));
 
 // [\!/      0x0000000000000000000000000000000000000000404fa51d\!/]
 // [\!/    0x000000000000000000000000000000000000000000404fa51d\!/]

@@ -1,2 +1,6 @@
 *.o
 printf_tester
+
+*.log
+*.out
+*.dSYM
