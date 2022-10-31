@@ -1,43 +1,46 @@
-# NAME		= printf_tester
+NAME		= printf_tester
 
-# CC			= gcc -g -fsanitize=address -Wall -Wextra -Werror
-# PRINTF_SRC	= ../ft_printf/libftprintf.a
-# OBJ			= main.o
+CC			= gcc -g -fsanitize=address -Wall -Wextra -Werror
+PRINTF_LIB	= ../printf/libftprintf.a
+PRINTF_SRC	= ../printf/
+OBJ			= main.o
 
 
-# all	: $(NAME)
+all	: $(NAME)
 
-# $(NAME) : $(OBJ) $(PRINTF_SRC)
-# 	${CC} -o $(@) main.c $(PRINTF_SRC) -I../ft_printf/.
+$(NAME) : $(OBJ) make_lib
+	${CC} -o $(@) main.c $(PRINTF_LIB) -I$(PRINTF_SRC).
 
-# $(PRINTF_SRC):
-# 	$(MAKE) -C ../ft_printf/ libftprintf.a
+make_lib:
+	$(MAKE) -C $(PRINTF_SRC) 
 
-# clean:
-# 	$(RM) $(NAME) $(OBJ)
-# 	$(MAKE) -C ../ft_printf/ fclean
+clean:
+	$(RM) $(NAME) $(OBJ)
+	$(MAKE) -C $(PRINTF_SRC) fclean
 
-# .PHONY: ../ft_printf/libftprintf.a clean printf_tester all
+re: clean all
 
-__my_srcs	= ft_printf
+.PHONY: ../ft_printf/libftprintf.a clean printf_tester all
 
-TIMEOUT		= 10
-CFLAGS		= -g -fsanitize=address -Wall -Wextra -Werror
-STRICT		=
-UTILS 		= utils/malloc_mock.c utils/utils.c pf_utils.c
-PRINTF_LIB	= ../$(__my_srcs)/libftprintf.a
-TIMEOUT_ARG	= -D TIMEOUT=$(TIMEOUT)
+# __my_srcs	= ft_printf
 
-ifdef EXEC_STRICT
-STRICT		= -D STRICT_MEM
-endif
+# TIMEOUT		= 10
+# CFLAGS		= -g -fsanitize=address -Wall -Wextra -Werror
+# STRICT		=
+# UTILS 		= utils/malloc_mock.c utils/utils.c pf_utils.c
+# PRINTF_LIB	= ../$(__my_srcs)/libftprintf.a
+# TIMEOUT_ARG	= -D TIMEOUT=$(TIMEOUT)
 
-build_m:
-	-@$(MAKE) -C ../$(__my_srcs) fclean 1> /dev/null
-	-@$(MAKE) -s -C ../$(__my_srcs) all 1> /dev/null
-	-@clang $(CFLAGS) $(TIMEOUT_ARG) $(STRICT) $(UTILS) mandatory.c $(PRINTF_LIB) -ldl -o printf.out
+# ifdef EXEC_STRICT
+# STRICT		= -D STRICT_MEM
+# endif
 
-build_b:
-	-@$(MAKE) -C ../$(__my_srcs) fclean 1> /dev/null
-	-@$(MAKE) -s -C ../$(__my_srcs) bonus 1> /dev/null
-	-@clang $(CFLAGS) $(TIMEOUT_ARG) $(STRICT) $(UTILS) bonus.c $(PRINTF_LIB) -ldl -o printf_b.out
+# build_m:
+# 	-@$(MAKE) -C ../$(__my_srcs) fclean 1> /dev/null
+# 	-@$(MAKE) -s -C ../$(__my_srcs) all 1> /dev/null
+# 	-@clang $(CFLAGS) $(TIMEOUT_ARG) $(STRICT) $(UTILS) mandatory.c $(PRINTF_LIB) -ldl -o printf.out
+
+# build_b:
+# 	-@$(MAKE) -C ../$(__my_srcs) fclean 1> /dev/null
+# 	-@$(MAKE) -s -C ../$(__my_srcs) bonus 1> /dev/null
+# 	-@clang $(CFLAGS) $(TIMEOUT_ARG) $(STRICT) $(UTILS) bonus.c $(PRINTF_LIB) -ldl -o printf_b.out
